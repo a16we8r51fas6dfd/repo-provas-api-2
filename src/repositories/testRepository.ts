@@ -42,8 +42,22 @@ async function insert(createNewTest: CreateNewTest) {
   });
 }
 
+async function update(testId: number) {
+  return prisma.test.update({
+    where: {
+      id: testId,
+    },
+    data: {
+      views: {
+        increment: 1,
+      },
+    },
+  });
+}
+
 export default {
   getTestsByDiscipline,
   getTestsByTeachers,
   insert,
+  update,
 };

@@ -10,5 +10,10 @@ testRouter.post(
   ensureAuthenticatedMiddleware,
   testController.newTest
 );
+testRouter.patch(
+  "/tests",
+  ensureAuthenticatedMiddleware,
+  testController.updateViews
+);
 
 export default testRouter;

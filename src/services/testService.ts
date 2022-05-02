@@ -20,7 +20,12 @@ async function insertTest(createNewTest: CreateNewTest) {
   await testRepository.insert(createNewTest);
 }
 
+async function updateViews(testId: number) {
+  await testRepository.update(testId);
+}
+
 export default {
   find,
   insertTest,
+  updateViews,
 };

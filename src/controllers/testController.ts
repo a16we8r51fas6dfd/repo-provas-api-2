@@ -31,13 +31,22 @@ async function newTest(req: Request, res: Response) {
     pdfUrl: newTest.pdfUrl,
     categoryId: categoryId.id,
     teacherDisciplineId: teacherDisciplineId.id,
+    views: 0,
   };
 
   await testService.insertTest(formatedNewTest);
   res.sendStatus(201);
 }
 
+async function updateViews(req: Request, res: Response) {
+  const testId = parseInt(req.body.id);
+  await testService.updateViews(testId);
+
+  res.sendStatus(200);
+}
+
 export default {
   find,
   newTest,
+  updateViews,
 };
