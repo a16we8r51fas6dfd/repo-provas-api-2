@@ -14,6 +14,25 @@ async function findMany(discipline: string) {
   });
 }
 
+async function findByName(teacher: string) {
+  return prisma.teacher.findUnique({
+    where: {
+      name: teacher,
+    },
+  });
+}
+
+async function findTeacherDiscipline(teacherId: number, disciplineId: number) {
+  return prisma.teacherDiscipline.findFirst({
+    where: {
+      disciplineId: disciplineId,
+      teacherId: teacherId,
+    },
+  });
+}
+
 export default {
   findMany,
+  findByName,
+  findTeacherDiscipline,
 };
