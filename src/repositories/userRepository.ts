@@ -1,5 +1,5 @@
-import { prisma } from "../database.js";
-import { CreateUserData } from "../services/userService.js";
+import { prisma } from '../database.js';
+import { CreateUserData } from '../services/userService.js';
 
 async function findById(id: number) {
   return prisma.user.findUnique({

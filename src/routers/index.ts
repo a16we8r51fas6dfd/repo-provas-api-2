@@ -1,9 +1,9 @@
-import { Router } from "express";
-import categoryRouter from "./categoryRouter.js";
-import disciplineRouter from "./disciplineRouter.js";
-import teacherRouter from "./teacherRouter.js";
-import testRouter from "./testRouter.js";
-import userRouter from "./userRouter.js";
+import { Router } from 'express';
+import categoryRouter from './categoryRouter.js';
+import disciplineRouter from './disciplineRouter.js';
+import teacherRouter from './teacherRouter.js';
+import testRouter from './testRouter.js';
+import userRouter from './userRouter.js';
 
 const router = Router();
 router.use(userRouter);

@@ -1,13 +1,13 @@
-import { Request, Response } from "express";
-import categoryService from "../services/categoryService.js";
-import disciplineService from "../services/disciplineService.js";
-import teacherService from "../services/teacherService.js";
-import testService from "../services/testService.js";
+import { Request, Response } from 'express';
+import categoryService from '../services/categoryService.js';
+import disciplineService from '../services/disciplineService.js';
+import teacherService from '../services/teacherService.js';
+import testService from '../services/testService.js';
 
 async function find(req: Request, res: Response) {
   const { groupBy } = req.query as { groupBy: string };
 
-  if (groupBy !== "disciplines" && groupBy !== "teachers") {
+  if (groupBy !== 'disciplines' && groupBy !== 'teachers') {
     return res.sendStatus(400);
   }
 
@@ -21,10 +21,7 @@ async function newTest(req: Request, res: Response) {
   const disciplineId = await disciplineService.findByName(newTest.discipline);
   const categoryId = await categoryService.findByName(newTest.category);
   const teacherId = await teacherService.findByName(newTest.teacher);
-  const teacherDisciplineId = await teacherService.findTeacherDisciplineId(
-    teacherId.id,
-    disciplineId.id
-  );
+  const teacherDisciplineId = await teacherService.findTeacherDisciplineId(teacherId.id, disciplineId.id);
 
   const formatedNewTest = {
     name: newTest.name,

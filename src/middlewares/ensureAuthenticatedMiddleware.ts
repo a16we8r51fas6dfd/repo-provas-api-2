@@ -1,20 +1,16 @@
-import dotenv from "dotenv";
-import { NextFunction, Request, Response } from "express";
-import jwt from "jsonwebtoken";
-import userService from "../services/userService.js";
-import { unauthorizedError } from "../utils/errorUtils.js";
+import dotenv from 'dotenv';
+import { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import userService from '../services/userService.js';
+import { unauthorizedError } from '../utils/errorUtils.js';
 dotenv.config();
 
-export async function ensureAuthenticatedMiddleware(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const authorization = req.headers["authorization"];
-  if (!authorization) throw unauthorizedError("Missing authorization header");
+export async function ensureAuthenticatedMiddleware(req: Request, res: Response, next: NextFunction) {
+  const authorization = req.headers['authorization'];
+  if (!authorization) throw unauthorizedError('Missing authorization header');
 
-  const token = authorization.replace("Bearer ", "");
-  if (!token) throw unauthorizedError("Missing token");
+  const token = authorization.replace('Bearer ', '');
+  if (!token) throw unauthorizedError('Missing token');
 
   try {
     const { userId } = jwt.verify(token, process.env.JWT_SECRET) as {
@@ -25,6 +21,6 @@ export async function ensureAuthenticatedMiddleware(
 
     next();
   } catch {
-    throw unauthorizedError("Invalid token");
+    throw unauthorizedError('Invalid token');
   }
 }

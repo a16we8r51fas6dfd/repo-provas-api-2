@@ -1,4 +1,4 @@
-import { prisma } from "../database.js";
+import { prisma } from '../database.js';
 
 async function findMany(discipline: string) {
   return prisma.teacherDiscipline.findMany({

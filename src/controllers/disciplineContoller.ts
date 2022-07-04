@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import disciplineService from "../services/disciplineService.js";
+import { Request, Response } from 'express';
+import disciplineService from '../services/disciplineService.js';
 
 async function findMany(req: Request, res: Response) {
   const disciplines = await disciplineService.findMany();
